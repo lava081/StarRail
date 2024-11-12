@@ -20,7 +20,7 @@ export default class Rogue extends Base {
     const thisMonth = !(this.e.msg.includes('上期') || this.e.msg.includes('往期'))
 
     const res = await MysInfo.get(this.e, 'rogue')
-    if (res?.retcode !== 0) return false
+    if (res?.retcode !== 0) return this.e.reply('获取挑战数据失败，请先绑定ck/sk')
 
     const { data = {} } = res
     if (!data[`${thisMonth ? 'current' : 'last'}_record`]?.has_data) {
@@ -53,7 +53,7 @@ export default class Rogue extends Base {
         : ['normal', (thisMonth ? 'cur' : 'last') + '_week']
 
     const res = await MysInfo.get(this.e, 'rogue_tourn')
-    if (res?.retcode !== 0) return false
+    if (res?.retcode !== 0) return this.e.reply('获取挑战数据失败，请先绑定ck/sk')
 
     const { data = {} } = res
     if (
@@ -99,7 +99,7 @@ export default class Rogue extends Base {
     this.model = 'rogue/rogue_nous'
 
     const res = await MysInfo.get(this.e, 'rogue_nous')
-    if (res?.retcode !== 0) return false
+    if (res?.retcode !== 0) return this.e.reply('获取挑战数据失败，请先绑定ck/sk')
 
     const { data = {} } = res
     if (!data.detail?.records?.length) {
@@ -122,7 +122,7 @@ export default class Rogue extends Base {
     this.model = 'rogue/rogue_locust'
 
     const res = await MysInfo.get(this.e, 'rogue_locust')
-    if (res?.retcode !== 0) return false
+    if (res?.retcode !== 0) return this.e.reply('获取挑战数据失败，请先绑定ck/sk')
 
     const { data = {} } = res
     if (!data.detail?.records?.length) {

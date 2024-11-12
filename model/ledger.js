@@ -38,7 +38,7 @@ export default class Ledger extends Base {
 
     let ledgerInfo
     this.isnowMonth = MysUtil.checkMonth(year, month, 0)
-    if (!this.mysInfo.ckInfo.ck || !this.isnowMonth) {
+    if (!this.mysInfo.ckInfo?.ck || !this.isnowMonth) {
       const dataPath = Data.gamePath(this.game) + 'LedgerData/' + this.mysInfo.uid + '.json'
       ledgerInfo = Data.readJSON(dataPath, { root: true })?.[year]?.[month]
       if (!ledgerInfo && !MysUtil.checkMonth(year, month)) {
